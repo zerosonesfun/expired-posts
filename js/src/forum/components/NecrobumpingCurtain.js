@@ -1,6 +1,6 @@
 import Component from 'flarum/common/Component';
 
-export default class NecrobumpingCheck extends Component {
+export default class NecrobumpingCurtain extends Component {
     oninit(vnode) {
         super.oninit(vnode);
     }
@@ -17,9 +17,8 @@ export default class NecrobumpingCheck extends Component {
 
         return (
             <div>
-                <div className="Alert">
-                    <div className="Alert-body">
-                        <div className="hide">
+                <div id="curtain-overlay">
+                    <div id="curtain-text">
                             <h4>
                                 {(customTitle && customTitle.replace(/\[time]/i, time)) ||
                                     app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.title', {
@@ -28,7 +27,6 @@ export default class NecrobumpingCheck extends Component {
                             </h4>
 
                             <p>{customDescription || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.description')}</p>
-                        </div>
                     </div>
                 </div>
             </div>

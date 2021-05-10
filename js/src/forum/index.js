@@ -1,8 +1,10 @@
 import { extend } from 'flarum/common/extend';
 import TextEditor from 'flarum/common/components/TextEditor';
 import ReplyComposer from 'flarum/common/components/ReplyComposer';
-
+import DiscussionListItem from 'flarum/common/components/DiscussionListItem';
+import DiscussionHero from 'flarum/common/components/DiscussionHero';
 import NecrobumpingCheck from './components/NecrobumpingCheck';
+import NecrobumpingCurtain from './components/NecrobumpingCurtain';
 
 const isNecrobumping = (discussion) => {
     if (!discussion) return false;
@@ -46,6 +48,32 @@ app.initializers.add('fof/prevent-necrobumping', () => {
         }
     });
 
+    extend(DiscussionListItem.prototype, 'infoItems', function (items) {
+        const days = isNecrobumping(this.attrs.discussion);
+
+        if (days) {
+            items.add(
+                'fof-necrobumping',
+                NecrobumpingCheck.component({
+                    days,
+                })
+            );
+        }
+    });
+
+    extend(DiscussionHero.prototype, 'items', function (items) {
+        const days = isNecrobumping(this.attrs.discussion);
+
+        if (days) {
+            items.add(
+                'fof-necrobumping',
+                NecrobumpingCurtain.component({
+                    days,
+                })
+            );
+        }
+    });
+
     extend(ReplyComposer.prototype, 'data', function (data) {
         data['fof-necrobumping'] = this.composer.fields.fofNecrobumping;
     });
@@ -53,4 +81,5 @@ app.initializers.add('fof/prevent-necrobumping', () => {
 
 export const components = {
     NecrobumpingCheck,
+    NecrobumpingCurtain,
 };

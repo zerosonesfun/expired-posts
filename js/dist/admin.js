@@ -1,2 +1,296 @@
-module.exports=function(t){var e={};function n(r){if(e[r])return e[r].exports;var s=e[r]={i:r,l:!1,exports:{}};return t[r].call(s.exports,s,s.exports,n),s.l=!0,s.exports}return n.m=t,n.c=e,n.d=function(t,e,r){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:r})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var s in t)n.d(r,s,function(e){return t[e]}.bind(null,s));return r},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=11)}([function(t,e,n){"use strict";function r(t,e){t.prototype=Object.create(e.prototype),t.prototype.constructor=t,t.__proto__=e}n.d(e,"a",(function(){return r}))},,,,,,,function(t,e){t.exports=flarum.extensions["fof-components"]},function(t,e){t.exports=flarum.core.compat["common/utils/classList"]},function(t,e){t.exports=flarum.core.compat["common/components/ExtensionPage"]},,function(t,e,n){"use strict";n.r(e);var r=n(0),s=n(7),o=n(8),i=n.n(o),a=n(9),p=n.n(a),l=s.settings.items,u=l.StringItem,c=l.NumberItem,f=function(t){function e(){return t.apply(this,arguments)||this}Object(r.a)(e,t);var n=e.prototype;return n.oninit=function(e){t.prototype.oninit.call(this,e),this.setting=this.setting.bind(this)},n.content=function(){var t,e=this;return[m("div",{class:"container"},m("div",{class:"NecroPage"},m("div",{className:"Form-group"},m("label",null,app.translator.trans("fof-prevent-necrobumping.admin.settings.days_label")),m(c,{name:"fof-prevent-necrobumping.days",simple:!0,min:"0",required:!0,setting:this.setting}),m("p",{className:"helpText"},app.translator.trans("fof-prevent-necrobumping.admin.settings.days_help"))),m("div",{className:"Form-group"},m("label",null,app.translator.trans("fof-prevent-necrobumping.admin.settings.message_title_label")),m(u,{name:"fof-prevent-necrobumping.message.title",simple:!0,setting:this.setting}),m("p",{className:"helpText"},app.translator.trans("fof-prevent-necrobumping.admin.settings.message_title_help"))),m(u,{name:"fof-prevent-necrobumping.message.description",setting:this.setting},app.translator.trans("fof-prevent-necrobumping.admin.settings.message_description_label")),m(u,{name:"fof-prevent-necrobumping.message.agreement",setting:this.setting},app.translator.trans("fof-prevent-necrobumping.admin.settings.message_agreement_label")),app.store.models.tags&&m("div",{class:"Form-group"},m("h3",null,app.translator.trans("fof-prevent-necrobumping.admin.settings.tags_title")),m("p",{className:"helpText"},app.translator.trans("fof-prevent-necrobumping.admin.settings.tags_help")),m("div",{className:"necrobumping--tags"},(t=app.store.all("tags"),flarum.core.compat["tags/utils/sortTags"](t)).map((function(t){return m("div",{className:i()(["Form-group",t.isChild()&&"isChild",!t.isPrimary()&&!t.isChild()&&"isSecondary"])},m("label",null,t.name()),m(c,{name:"fof-prevent-necrobumping.days.tags."+t.id(),simple:!0,min:"0",setting:e.setting}))})))),this.submitButton()))]},e}(p.a);app.initializers.add("fof/prevent-necrobumping",(function(){app.extensionData.for("fof-prevent-necrobumping").registerPage(f)}))}]);
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = "./admin.js");
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./admin.js":
+/*!******************!*\
+  !*** ./admin.js ***!
+  \******************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _src_admin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./src/admin */ "./src/admin/index.js");
+/* empty/unused harmony star reexport */
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _inheritsLoose; });
+/* harmony import */ var _setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./setPrototypeOf.js */ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js");
+
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype);
+  subClass.prototype.constructor = subClass;
+  Object(_setPrototypeOf_js__WEBPACK_IMPORTED_MODULE_0__["default"])(subClass, superClass);
+}
+
+/***/ }),
+
+/***/ "./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js":
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/setPrototypeOf.js ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return _setPrototypeOf; });
+function _setPrototypeOf(o, p) {
+  _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+/***/ }),
+
+/***/ "./src/admin/components/SettingsPage.js":
+/*!**********************************************!*\
+  !*** ./src/admin/components/SettingsPage.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return SettingsPage; });
+/* harmony import */ var _babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/esm/inheritsLoose */ "./node_modules/@babel/runtime/helpers/esm/inheritsLoose.js");
+/* harmony import */ var _fof_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @fof-components */ "@fof-components");
+/* harmony import */ var _fof_components__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_fof_components__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var flarum_common_utils_classList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! flarum/common/utils/classList */ "flarum/common/utils/classList");
+/* harmony import */ var flarum_common_utils_classList__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(flarum_common_utils_classList__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var flarum_common_components_ExtensionPage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! flarum/common/components/ExtensionPage */ "flarum/common/components/ExtensionPage");
+/* harmony import */ var flarum_common_components_ExtensionPage__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(flarum_common_components_ExtensionPage__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+var _settings$items = _fof_components__WEBPACK_IMPORTED_MODULE_1__["settings"].items,
+    StringItem = _settings$items.StringItem,
+    NumberItem = _settings$items.NumberItem;
+
+var sortTags = function sortTags(tags) {
+  return flarum.core.compat['tags/utils/sortTags'](tags);
+};
+
+var SettingsPage = /*#__PURE__*/function (_ExtensionPage) {
+  Object(_babel_runtime_helpers_esm_inheritsLoose__WEBPACK_IMPORTED_MODULE_0__["default"])(SettingsPage, _ExtensionPage);
+
+  function SettingsPage() {
+    return _ExtensionPage.apply(this, arguments) || this;
+  }
+
+  var _proto = SettingsPage.prototype;
+
+  _proto.oninit = function oninit(vnode) {
+    _ExtensionPage.prototype.oninit.call(this, vnode);
+
+    this.setting = this.setting.bind(this);
+  };
+
+  _proto.content = function content() {
+    var _this = this;
+
+    return [m("div", {
+      "class": "container"
+    }, m("div", {
+      "class": "NecroPage"
+    }, m("div", {
+      className: "Form-group"
+    }, m("label", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.days_label')), m(NumberItem, {
+      name: "fof-prevent-necrobumping.days",
+      simple: true,
+      min: "0",
+      required: true,
+      setting: this.setting
+    }), m("p", {
+      className: "helpText"
+    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.days_help'))), m("div", {
+      className: "Form-group"
+    }, m("label", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_label')), m(StringItem, {
+      name: "fof-prevent-necrobumping.message.title",
+      simple: true,
+      setting: this.setting
+    }), m("p", {
+      className: "helpText"
+    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_help'))), m(StringItem, {
+      name: "fof-prevent-necrobumping.message.description",
+      setting: this.setting
+    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_description_label')), m(StringItem, {
+      name: "fof-prevent-necrobumping.message.agreement",
+      setting: this.setting
+    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_agreement_label')), app.store.models.tags && m("div", {
+      "class": "Form-group"
+    }, m("h3", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_title')), m("p", {
+      className: "helpText"
+    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_help')), m("div", {
+      className: "necrobumping--tags"
+    }, sortTags(app.store.all('tags')).map(function (tag) {
+      return m("div", {
+        className: flarum_common_utils_classList__WEBPACK_IMPORTED_MODULE_2___default()(['Form-group', tag.isChild() && 'isChild', !tag.isPrimary() && !tag.isChild() && 'isSecondary'])
+      }, m("label", null, tag.name()), m(NumberItem, {
+        name: "fof-prevent-necrobumping.days.tags." + tag.id(),
+        simple: true,
+        min: "0",
+        setting: _this.setting
+      }));
+    }))), this.submitButton()))];
+  };
+
+  return SettingsPage;
+}(flarum_common_components_ExtensionPage__WEBPACK_IMPORTED_MODULE_3___default.a);
+
+
+
+/***/ }),
+
+/***/ "./src/admin/index.js":
+/*!****************************!*\
+  !*** ./src/admin/index.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_SettingsPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SettingsPage */ "./src/admin/components/SettingsPage.js");
+
+app.initializers.add('fof/prevent-necrobumping', function () {
+  app.extensionData["for"]('fof-prevent-necrobumping').registerPage(_components_SettingsPage__WEBPACK_IMPORTED_MODULE_0__["default"]);
+});
+
+/***/ }),
+
+/***/ "@fof-components":
+/*!******************************************************!*\
+  !*** external "flarum.extensions['fof-components']" ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.extensions['fof-components'];
+
+/***/ }),
+
+/***/ "flarum/common/components/ExtensionPage":
+/*!************************************************************************!*\
+  !*** external "flarum.core.compat['common/components/ExtensionPage']" ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['common/components/ExtensionPage'];
+
+/***/ }),
+
+/***/ "flarum/common/utils/classList":
+/*!***************************************************************!*\
+  !*** external "flarum.core.compat['common/utils/classList']" ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = flarum.core.compat['common/utils/classList'];
+
+/***/ })
+
+/******/ });
 //# sourceMappingURL=admin.js.map
