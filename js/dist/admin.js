@@ -195,39 +195,36 @@ var SettingsPage = /*#__PURE__*/function (_ExtensionPage) {
       "class": "NecroPage"
     }, m("div", {
       className: "Form-group"
-    }, m("label", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.days_label')), m(NumberItem, {
-      name: "fof-prevent-necrobumping.days",
+    }, m("label", null, app.translator.trans('expired-posts.admin.settings.days_label')), m(NumberItem, {
+      name: "expired-posts.days",
       simple: true,
       min: "0",
       required: true,
       setting: this.setting
     }), m("p", {
       className: "helpText"
-    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.days_help'))), m("div", {
+    }, app.translator.trans('expired-posts.admin.settings.days_help'))), m("div", {
       className: "Form-group"
-    }, m("label", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_label')), m(StringItem, {
-      name: "fof-prevent-necrobumping.message.title",
+    }, m("label", null, app.translator.trans('expired-posts.admin.settings.message_title_label')), m(StringItem, {
+      name: "expired-posts.message.title",
       simple: true,
       setting: this.setting
     }), m("p", {
       className: "helpText"
-    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_help'))), m(StringItem, {
-      name: "fof-prevent-necrobumping.message.description",
+    }, app.translator.trans('expired-posts.admin.settings.message_title_help'))), m(StringItem, {
+      name: "expired-posts.message.description",
       setting: this.setting
-    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_description_label')), m(StringItem, {
-      name: "fof-prevent-necrobumping.message.agreement",
-      setting: this.setting
-    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.message_agreement_label')), app.store.models.tags && m("div", {
+    }, app.translator.trans('expired-posts.admin.settings.message_description_label')), app.store.models.tags && m("div", {
       "class": "Form-group"
-    }, m("h3", null, app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_title')), m("p", {
+    }, m("h3", null, app.translator.trans('expired-posts.admin.settings.tags_title')), m("p", {
       className: "helpText"
-    }, app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_help')), m("div", {
+    }, app.translator.trans('expired-posts.admin.settings.tags_help')), m("div", {
       className: "necrobumping--tags"
     }, sortTags(app.store.all('tags')).map(function (tag) {
       return m("div", {
         className: flarum_common_utils_classList__WEBPACK_IMPORTED_MODULE_2___default()(['Form-group', tag.isChild() && 'isChild', !tag.isPrimary() && !tag.isChild() && 'isSecondary'])
       }, m("label", null, tag.name()), m(NumberItem, {
-        name: "fof-prevent-necrobumping.days.tags." + tag.id(),
+        name: "expired-posts.days.tags." + tag.id(),
         simple: true,
         min: "0",
         setting: _this.setting
@@ -253,8 +250,8 @@ var SettingsPage = /*#__PURE__*/function (_ExtensionPage) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SettingsPage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/SettingsPage */ "./src/admin/components/SettingsPage.js");
 
-app.initializers.add('fof/prevent-necrobumping', function () {
-  app.extensionData["for"]('fof-prevent-necrobumping').registerPage(_components_SettingsPage__WEBPACK_IMPORTED_MODULE_0__["default"]);
+app.initializers.add('zerosonesfun/expired-posts', function () {
+  app.extensionData["for"]('zerosonesfun-expired-posts').registerPage(_components_SettingsPage__WEBPACK_IMPORTED_MODULE_0__["default"]);
 });
 
 /***/ }),

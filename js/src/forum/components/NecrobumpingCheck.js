@@ -10,8 +10,8 @@ export default class NecrobumpingCheck extends Component {
     }
 
     view() {
-        const customTitle = app.data['fof-prevent-necrobumping.message.title'];
-        const customDescription = app.data['fof-prevent-necrobumping.message.description'];
+        const customTitle = app.data['expired-posts.message.title'];
+        const customDescription = app.data['expired-posts.message.description'];
 
         const time = dayjs().add(this.attrs.days, 'days').fromNow(true);
 
@@ -22,12 +22,12 @@ export default class NecrobumpingCheck extends Component {
                         <div className="hide">
                             <h4>
                                 {(customTitle && customTitle.replace(/\[time]/i, time)) ||
-                                    app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.title', {
+                                    app.translator.trans('expired-posts.forum.composer.warning.title', {
                                         time,
                                     })}
                             </h4>
 
-                            <p>{customDescription || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.description')}</p>
+                            <p>{customDescription || app.translator.trans('expired-posts.forum.composer.warning.description')}</p>
                         </div>
                     </div>
                 </div>

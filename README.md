@@ -1,6 +1,6 @@
 # Prevent Necrobumping by FriendsOfFlarum
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/fof/prevent-necrobumping.svg)](https://packagist.org/packages/fof/prevent-necrobumping) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Donate](https://img.shields.io/badge/donate-datitisev-important.svg)](https://datitisev.me/donate)
+![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/zerosonesfun/expired-posts.svg)](https://packagist.org/packages/zerosonesfun/expired-posts) [![OpenCollective](https://img.shields.io/badge/opencollective-fof-blue.svg)](https://opencollective.com/fof/donate) [![Donate](https://img.shields.io/badge/donate-datitisev-important.svg)](https://datitisev.me/donate)
 
 A [Flarum](http://flarum.org) extension. Warn before necrobumping old discussions.
 
@@ -18,13 +18,13 @@ A [Flarum](http://flarum.org) extension. Warn before necrobumping old discussion
 Use [Bazaar](https://discuss.flarum.org/d/5151-flagrow-bazaar-the-extension-marketplace) or install manually with composer:
 
 ```sh
-composer require fof/prevent-necrobumping
+composer require zerosonesfun/expired-posts
 ```
 
 ### Updating
 
 ```sh
-composer update fof/prevent-necrobumping
+composer update zerosonesfun/expired-posts
 ```
 
 ### Links
@@ -32,7 +32,7 @@ composer update fof/prevent-necrobumping
 
 [![OpenCollective](https://img.shields.io/badge/donate-friendsofflarum-44AEE5?style=for-the-badge&logo=open-collective)](https://opencollective.com/fof/donate) [![GitHub](https://img.shields.io/badge/donate-datitisev-ea4aaa?style=for-the-badge&logo=github)](https://datitisev.me/donate/github)
 
-- [Packagist](https://packagist.org/packages/fof/prevent-necrobumping)
+- [Packagist](https://packagist.org/packages/zerosonesfun/expired-posts)
 - [GitHub](https://github.com/FriendsOfFlarum/prevent-necrobumping)
 
 An extension by [FriendsOfFlarum](https://github.com/FriendsOfFlarum), commissioned by [webdeveloper.com](https://webdeveloper.com).

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of fof/prevent-necrobumping.
+ * This file is part of zerosonesfun/expired-posts.
  *
  * Copyright (c) 2020 FriendsOfFlarum.
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\PreventNecrobumping;
+namespace Zerosonesfun\ExpiredPosts;
 
 use Flarum\Api\Serializer\DiscussionSerializer;
 use Flarum\Extend as Vanilla;
@@ -30,7 +30,7 @@ return [
     new Vanilla\Locales(__DIR__.'/resources/locale'),
 
     (new Extend\ExtensionSettings())
-        ->setPrefix('fof-prevent-necrobumping.')
+        ->setPrefix('expired-posts.')
         ->addKeys(['message.title', 'message.description', 'message.agreement']),
 
     (new Vanilla\Event())

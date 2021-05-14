@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of fof/prevent-necrobumping.
+ * This file is part of zerosonesfun/expired-posts.
  *
  * Copyright (c) 2020 FriendsOfFlarum.
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\PreventNecrobumping\Listeners;
+namespace Zerosonesfun\ExpiredPosts\Listeners;
 
 use Flarum\Api\Serializer\DiscussionSerializer;
 use Flarum\Discussion\Discussion;
@@ -29,7 +29,7 @@ class AddForumAttributes
 
     public function __invoke(DiscussionSerializer $serializer, Discussion $discussion, array $attributes): array
     {
-        $attributes['fof-prevent-necrobumping'] = $this->getDays($discussion);
+        $attributes['expired-posts'] = $this->getDays($discussion);
 
         return $attributes;
     }
@@ -41,12 +41,12 @@ class AddForumAttributes
      */
     protected function getDays($discussion)
     {
-        $days = $this->settings->get('fof-prevent-necrobumping.days');
+        $days = $this->settings->get('expired-posts.days');
         $tags = $discussion->tags;
 
         if ($tags && $tags->isNotEmpty()) {
             $tagDays = $tags->map(function ($tag) {
-                return $this->settings->get("fof-prevent-necrobumping.days.tags.{$tag->id}");
+                return $this->settings->get("expired-posts.days.tags.{$tag->id}");
             })->filter(function ($days) {
                 return $days != null && $days != '' && !is_nan($days) && (int) $days >= 0;
             });

@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of fof/prevent-necrobumping.
+ * This file is part of zerosonesfun/expired-posts.
  *
  * Copyright (c) 2020 FriendsOfFlarum.
  *
@@ -9,13 +9,13 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\PreventNecrobumping\Listeners;
+namespace Zerosonesfun\ExpiredPosts\Listeners;
 
 use Carbon\Carbon;
 use Flarum\Discussion\Discussion;
 use Flarum\Post\Event\Saving;
 use Flarum\Settings\SettingsRepositoryInterface;
-use FoF\PreventNecrobumping\Validators\NecrobumpingPostValidator;
+use Zerosonesfun\ExpiredPosts\Validators\NecrobumpingPostValidator;
 use Illuminate\Support\Arr;
 
 class ValidateNecrobumping
@@ -43,7 +43,7 @@ class ValidateNecrobumping
 
         if ($lastPostedAt && $days && $lastPostedAt->diffInDays(Carbon::now()) >= $days) {
             $this->validator->assertValid([
-                'fof-necrobumping' => Arr::get($event->data, 'attributes.fof-necrobumping'),
+                'expired-posts' => Arr::get($event->data, 'attributes.expired-posts'),
             ]);
         }
     }
@@ -55,12 +55,12 @@ class ValidateNecrobumping
      */
     protected function getDays($discussion)
     {
-        $days = $this->settings->get('fof-prevent-necrobumping.days');
+        $days = $this->settings->get('expired-posts.days');
         $tags = $discussion->tags;
 
         if ($tags && $tags->isNotEmpty()) {
             $tagDays = $tags->map(function ($tag) {
-                return $this->settings->get("fof-prevent-necrobumping.days.tags.{$tag->id}");
+                return $this->settings->get("expired-posts.days.tags.{$tag->id}");
             })->filter(function ($days) {
                 return $days != null && $days != '' && !is_nan($days) && (int) $days >= 0;
             });

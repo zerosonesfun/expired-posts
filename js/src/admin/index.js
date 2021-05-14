@@ -1,5 +1,5 @@
 import SettingsPage from './components/SettingsPage';
 
-app.initializers.add('fof/prevent-necrobumping', () => {
-    app.extensionData.for('fof-prevent-necrobumping').registerPage(SettingsPage);
+app.initializers.add('zerosonesfun/expired-posts', () => {
+    app.extensionData.for('zerosonesfun-expired-posts').registerPage(SettingsPage);
 });

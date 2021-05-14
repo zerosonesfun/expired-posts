@@ -9,7 +9,7 @@ import NecrobumpingCurtain from './components/NecrobumpingCurtain';
 const isNecrobumping = (discussion) => {
     if (!discussion) return false;
 
-    const days = discussion.attribute('fof-prevent-necrobumping');
+    const days = discussion.attribute('expired-posts');
     const lastPostedAt = discussion.lastPostedAt();
 
     if (lastPostedAt && days && dayjs().subtract(days, 'days').isAfter(lastPostedAt.getTime())) {
@@ -19,7 +19,7 @@ const isNecrobumping = (discussion) => {
     return false;
 };
 
-app.initializers.add('fof/prevent-necrobumping', () => {
+app.initializers.add('zerosonesfun/expired-posts', () => {
     extend(TextEditor.prototype, 'view', function (vdom) {
         if (!app.composer.bodyMatches(ReplyComposer)) return;
 
@@ -38,7 +38,7 @@ app.initializers.add('fof/prevent-necrobumping', () => {
 
         if (days) {
             items.add(
-                'fof-necrobumping',
+                'expired-posts',
                 NecrobumpingCheck.component({
                     days,
                     set: (v) => (this.composer.fields.fofNecrobumping = v),
@@ -53,7 +53,7 @@ app.initializers.add('fof/prevent-necrobumping', () => {
 
         if (days) {
             items.add(
-                'fof-necrobumping',
+                'expired-posts',
                 NecrobumpingCheck.component({
                     days,
                 })
@@ -66,18 +66,19 @@ app.initializers.add('fof/prevent-necrobumping', () => {
 
         if (days) {
             items.add(
-                'fof-necrobumping',
+                'expired-posts',
                 NecrobumpingCurtain.component({
                     days,
                 })
-            );
+            );   
         }
     });
 
     extend(ReplyComposer.prototype, 'data', function (data) {
-        data['fof-necrobumping'] = this.composer.fields.fofNecrobumping;
+        data['expired-posts'] = this.composer.fields.fofNecrobumping;
     });
 });
+  
 
 export const components = {
     NecrobumpingCheck,

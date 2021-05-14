@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of fof/prevent-necrobumping.
+ * This file is part of zerosonesfun/expired-posts.
  *
  * Copyright (c) 2020 FriendsOfFlarum.
  *
@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FoF\PreventNecrobumping\Validators;
+namespace Zerosonesfun\ExpiredPosts\Validators;
 
 use Flarum\Foundation\AbstractValidator;
 
@@ -19,7 +19,7 @@ class NecrobumpingPostValidator extends AbstractValidator
      * {@inheritdoc}
      */
     protected $rules = [
-        'fof-necrobumping' => 'accepted',
+        'expired-posts' => 'accepted',
     ];
 
     /**
@@ -28,7 +28,7 @@ class NecrobumpingPostValidator extends AbstractValidator
     protected function getMessages()
     {
         return [
-            'accepted' => app('translator')->trans('fof-prevent-necrobumping.forum.composer.warning.error'),
+            'accepted' => app('translator')->trans('expired-posts.forum.composer.warning.error'),
         ];
     }
 }

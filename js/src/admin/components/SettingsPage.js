@@ -20,28 +20,25 @@ export default class SettingsPage extends ExtensionPage {
             <div class="container">
                 <div class="NecroPage">
                     <div className="Form-group">
-                        <label>{app.translator.trans('fof-prevent-necrobumping.admin.settings.days_label')}</label>
-                        <NumberItem name="fof-prevent-necrobumping.days" simple min="0" required setting={this.setting} />
+                        <label>{app.translator.trans('expired-posts.admin.settings.days_label')}</label>
+                        <NumberItem name="expired-posts.days" simple min="0" required setting={this.setting} />
 
-                        <p className="helpText">{app.translator.trans('fof-prevent-necrobumping.admin.settings.days_help')}</p>
+                        <p className="helpText">{app.translator.trans('expired-posts.admin.settings.days_help')}</p>
                     </div>
                     <div className="Form-group">
-                        <label>{app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_label')}</label>
-                        <StringItem name="fof-prevent-necrobumping.message.title" simple setting={this.setting} />
+                        <label>{app.translator.trans('expired-posts.admin.settings.message_title_label')}</label>
+                        <StringItem name="expired-posts.message.title" simple setting={this.setting} />
 
-                        <p className="helpText">{app.translator.trans('fof-prevent-necrobumping.admin.settings.message_title_help')}</p>
+                        <p className="helpText">{app.translator.trans('expired-posts.admin.settings.message_title_help')}</p>
                     </div>
-                    <StringItem name="fof-prevent-necrobumping.message.description" setting={this.setting}>
-                        {app.translator.trans('fof-prevent-necrobumping.admin.settings.message_description_label')}
-                    </StringItem>
-                    <StringItem name="fof-prevent-necrobumping.message.agreement" setting={this.setting}>
-                        {app.translator.trans('fof-prevent-necrobumping.admin.settings.message_agreement_label')}
+                    <StringItem name="expired-posts.message.description" setting={this.setting}>
+                        {app.translator.trans('expired-posts.admin.settings.message_description_label')}
                     </StringItem>
 
                     {app.store.models.tags && (
                         <div class="Form-group">
-                            <h3>{app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_title')}</h3>
-                            <p className="helpText">{app.translator.trans('fof-prevent-necrobumping.admin.settings.tags_help')}</p>
+                            <h3>{app.translator.trans('expired-posts.admin.settings.tags_title')}</h3>
+                            <p className="helpText">{app.translator.trans('expired-posts.admin.settings.tags_help')}</p>
 
                             <div className="necrobumping--tags">
                                 {sortTags(app.store.all('tags')).map((tag) => (
@@ -53,7 +50,7 @@ export default class SettingsPage extends ExtensionPage {
                                         ])}
                                     >
                                         <label>{tag.name()}</label>
-                                        <NumberItem name={`fof-prevent-necrobumping.days.tags.${tag.id()}`} simple min="0" setting={this.setting} />
+                                        <NumberItem name={`expired-posts.days.tags.${tag.id()}`} simple min="0" setting={this.setting} />
                                     </div>
                                 ))}
                             </div>

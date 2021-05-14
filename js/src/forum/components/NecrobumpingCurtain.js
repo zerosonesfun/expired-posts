@@ -7,11 +7,16 @@ export default class NecrobumpingCurtain extends Component {
 
     oncreate(vnode) {
         super.oncreate(vnode);
+        document.getElementsByClassName('DiscussionPage-nav')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('ReplyPlaceholder')[0].style.visibility = 'hidden';
+        [].forEach.call(document.querySelectorAll('.Post-actions'), function (el) {
+            el.style.visibility = 'hidden';
+          });
     }
 
     view() {
-        const customTitle = app.data['fof-prevent-necrobumping.message.title'];
-        const customDescription = app.data['fof-prevent-necrobumping.message.description'];
+        const customTitle = app.data['expired-posts.message.title'];
+        const customDescription = app.data['expired-posts.message.description'];
 
         const time = dayjs().add(this.attrs.days, 'days').fromNow(true);
 
@@ -21,12 +26,12 @@ export default class NecrobumpingCurtain extends Component {
                     <div id="curtain-text">
                             <h4>
                                 {(customTitle && customTitle.replace(/\[time]/i, time)) ||
-                                    app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.title', {
+                                    app.translator.trans('expired-posts.forum.composer.warning.title', {
                                         time,
                                     })}
                             </h4>
 
-                            <p>{customDescription || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.description')}</p>
+                            <p>{customDescription || app.translator.trans('expired-posts.forum.composer.warning.description')}</p>
                     </div>
                 </div>
             </div>

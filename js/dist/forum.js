@@ -178,8 +178,8 @@ var NecrobumpingCheck = /*#__PURE__*/function (_Component) {
   };
 
   _proto.view = function view() {
-    var customTitle = app.data['fof-prevent-necrobumping.message.title'];
-    var customDescription = app.data['fof-prevent-necrobumping.message.description'];
+    var customTitle = app.data['expired-posts.message.title'];
+    var customDescription = app.data['expired-posts.message.description'];
     var time = dayjs().add(this.attrs.days, 'days').fromNow(true);
     return m("div", null, m("div", {
       className: "Alert"
@@ -187,9 +187,9 @@ var NecrobumpingCheck = /*#__PURE__*/function (_Component) {
       className: "Alert-body"
     }, m("div", {
       className: "hide"
-    }, m("h4", null, customTitle && customTitle.replace(/\[time]/i, time) || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.title', {
+    }, m("h4", null, customTitle && customTitle.replace(/\[time]/i, time) || app.translator.trans('expired-posts.forum.composer.warning.title', {
       time: time
-    })), m("p", null, customDescription || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.description'))))));
+    })), m("p", null, customDescription || app.translator.trans('expired-posts.forum.composer.warning.description'))))));
   };
 
   return NecrobumpingCheck;
@@ -230,19 +230,25 @@ var NecrobumpingCurtain = /*#__PURE__*/function (_Component) {
 
   _proto.oncreate = function oncreate(vnode) {
     _Component.prototype.oncreate.call(this, vnode);
+
+    document.getElementsByClassName('DiscussionPage-nav')[0].style.visibility = 'hidden';
+    document.getElementsByClassName('ReplyPlaceholder')[0].style.visibility = 'hidden';
+    [].forEach.call(document.querySelectorAll('.Post-actions'), function (el) {
+      el.style.visibility = 'hidden';
+    });
   };
 
   _proto.view = function view() {
-    var customTitle = app.data['fof-prevent-necrobumping.message.title'];
-    var customDescription = app.data['fof-prevent-necrobumping.message.description'];
+    var customTitle = app.data['expired-posts.message.title'];
+    var customDescription = app.data['expired-posts.message.description'];
     var time = dayjs().add(this.attrs.days, 'days').fromNow(true);
     return m("div", null, m("div", {
       id: "curtain-overlay"
     }, m("div", {
       id: "curtain-text"
-    }, m("h4", null, customTitle && customTitle.replace(/\[time]/i, time) || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.title', {
+    }, m("h4", null, customTitle && customTitle.replace(/\[time]/i, time) || app.translator.trans('expired-posts.forum.composer.warning.title', {
       time: time
-    })), m("p", null, customDescription || app.translator.trans('fof-prevent-necrobumping.forum.composer.warning.description')))));
+    })), m("p", null, customDescription || app.translator.trans('expired-posts.forum.composer.warning.description')))));
   };
 
   return NecrobumpingCurtain;
@@ -284,7 +290,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var isNecrobumping = function isNecrobumping(discussion) {
   if (!discussion) return false;
-  var days = discussion.attribute('fof-prevent-necrobumping');
+  var days = discussion.attribute('expired-posts');
   var lastPostedAt = discussion.lastPostedAt();
 
   if (lastPostedAt && days && dayjs().subtract(days, 'days').isAfter(lastPostedAt.getTime())) {
@@ -294,7 +300,7 @@ var isNecrobumping = function isNecrobumping(discussion) {
   return false;
 };
 
-app.initializers.add('fof/prevent-necrobumping', function () {
+app.initializers.add('zerosonesfun/expired-posts', function () {
   Object(flarum_common_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_common_components_TextEditor__WEBPACK_IMPORTED_MODULE_1___default.a.prototype, 'view', function (vdom) {
     if (!app.composer.bodyMatches(flarum_common_components_ReplyComposer__WEBPACK_IMPORTED_MODULE_2___default.a)) return;
     var $textarea = vdom.children && vdom.children.find(function (e) {
@@ -315,7 +321,7 @@ app.initializers.add('fof/prevent-necrobumping', function () {
     var days = isNecrobumping(this.attrs.discussion);
 
     if (days) {
-      items.add('fof-necrobumping', _components_NecrobumpingCheck__WEBPACK_IMPORTED_MODULE_5__["default"].component({
+      items.add('expired-posts', _components_NecrobumpingCheck__WEBPACK_IMPORTED_MODULE_5__["default"].component({
         days: days,
         set: function set(v) {
           return _this.composer.fields.fofNecrobumping = v;
@@ -330,7 +336,7 @@ app.initializers.add('fof/prevent-necrobumping', function () {
     var days = isNecrobumping(this.attrs.discussion);
 
     if (days) {
-      items.add('fof-necrobumping', _components_NecrobumpingCheck__WEBPACK_IMPORTED_MODULE_5__["default"].component({
+      items.add('expired-posts', _components_NecrobumpingCheck__WEBPACK_IMPORTED_MODULE_5__["default"].component({
         days: days
       }));
     }
@@ -339,13 +345,13 @@ app.initializers.add('fof/prevent-necrobumping', function () {
     var days = isNecrobumping(this.attrs.discussion);
 
     if (days) {
-      items.add('fof-necrobumping', _components_NecrobumpingCurtain__WEBPACK_IMPORTED_MODULE_6__["default"].component({
+      items.add('expired-posts', _components_NecrobumpingCurtain__WEBPACK_IMPORTED_MODULE_6__["default"].component({
         days: days
       }));
     }
   });
   Object(flarum_common_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_common_components_ReplyComposer__WEBPACK_IMPORTED_MODULE_2___default.a.prototype, 'data', function (data) {
-    data['fof-necrobumping'] = this.composer.fields.fofNecrobumping;
+    data['expired-posts'] = this.composer.fields.fofNecrobumping;
   });
 });
 var components = {
