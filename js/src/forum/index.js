@@ -32,6 +32,14 @@ app.initializers.add('zerosonesfun/expired-posts', () => {
             else $textarea.attrs.disabled = true;
         }
     });
+    
+    extend(DiscussionListItem.prototype, 'infoItems', function(items) {
+        const days = isNecrobumping(this.attrs.discussion);
+
+        if (days) {
+            items.add('script', <script>$('.item-expired-posts').closest('.DiscussionListItem').addClass('Expired');</script>);
+        }
+      });
 
     extend(ReplyComposer.prototype, 'headerItems', function (items) {
         const days = isNecrobumping(this.attrs.discussion);
