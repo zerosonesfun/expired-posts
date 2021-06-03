@@ -91,7 +91,7 @@ module.exports =
 /*!******************!*\
   !*** ./forum.js ***!
   \******************/
-/*! exports provided: components */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -315,6 +315,13 @@ app.initializers.add('zerosonesfun/expired-posts', function () {
       if (!disabled) delete $textarea.attrs.disabled;else $textarea.attrs.disabled = true;
     }
   });
+  Object(flarum_common_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_common_components_DiscussionListItem__WEBPACK_IMPORTED_MODULE_3___default.a.prototype, 'infoItems', function (items) {
+    var days = isNecrobumping(this.attrs.discussion);
+
+    if (days) {
+      items.add('script', m("script", null, "$('.item-expired-posts').closest('.DiscussionListItem').addClass('Expired');"));
+    }
+  });
   Object(flarum_common_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_common_components_ReplyComposer__WEBPACK_IMPORTED_MODULE_2___default.a.prototype, 'headerItems', function (items) {
     var _this = this;
 
@@ -338,7 +345,7 @@ app.initializers.add('zerosonesfun/expired-posts', function () {
     if (days) {
       items.add('expired-posts', _components_NecrobumpingCheck__WEBPACK_IMPORTED_MODULE_5__["default"].component({
         days: days
-      }));
+      }), 0);
     }
   });
   Object(flarum_common_extend__WEBPACK_IMPORTED_MODULE_0__["extend"])(flarum_common_components_DiscussionHero__WEBPACK_IMPORTED_MODULE_4___default.a.prototype, 'items', function (items) {

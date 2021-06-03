@@ -33,6 +33,14 @@ app.initializers.add('zerosonesfun/expired-posts', () => {
         }
     });
 
+    extend(DiscussionListItem.prototype, 'infoItems', function(items) {
+        const days = isNecrobumping(this.attrs.discussion);
+
+        if (days) {
+        items.add('script', <script>$('.item-expired-posts').closest('.DiscussionListItem').addClass('Expired');</script>);
+        }
+      });
+
     extend(ReplyComposer.prototype, 'headerItems', function (items) {
         const days = isNecrobumping(this.attrs.discussion);
 
@@ -56,7 +64,7 @@ app.initializers.add('zerosonesfun/expired-posts', () => {
                 'expired-posts',
                 NecrobumpingCheck.component({
                     days,
-                })
+                }), 0
             );
         }
     });
